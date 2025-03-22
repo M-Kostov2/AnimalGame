@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Animal_Game.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,8 +55,8 @@ namespace Animal_Game.Classes
           
             for (int i = 0; i < 40; i++)
             {
-                int row = randNumber.Next(0,60);
-                int col = randNumber.Next(0, 100);
+                int row = randNumber.Next(0,40);//60
+                int col = randNumber.Next(0, 60);//100
 
                 if (Field[row,col] == " " )
                 {
@@ -71,5 +72,12 @@ namespace Animal_Game.Classes
 
             return Field;
         }
+
+        public void EnemiesGeneration(IAnimal Animals)
+        { 
+        
+        
+        }
+       
     }
 }
