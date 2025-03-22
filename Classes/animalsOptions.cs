@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Animal_Game.Classes
 {
-    public class animalsOptions : IanimalsOptions
+    public class animalsOptions //: IanimalsOptions
     {
         private readonly List<IAnimal> Animals;
 

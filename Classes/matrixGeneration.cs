@@ -55,8 +55,8 @@ namespace Animal_Game.Classes
           
             for (int i = 0; i < 40; i++)
             {
-                int row = randNumber.Next(0,40);//60
-                int col = randNumber.Next(0, 60);//100
+                int row = randNumber.Next(0,60);//60
+                int col = randNumber.Next(0,100);//100
 
                 if (Field[row,col] == " " )
                 {
@@ -73,10 +73,29 @@ namespace Animal_Game.Classes
             return Field;
         }
 
-        public void EnemiesGeneration(IAnimal Animals)
-        { 
-        
-        
+        public void EnemiesGeneration(List<IAnimal> Animals,ref string[,] Field)
+        {
+            Random randNumber = new Random();
+
+            
+
+            for (int i = 0; i < Animals.Count; i++)
+            {
+                int row = randNumber.Next(0, 60);//60
+                int col = randNumber.Next(0, 100);//100
+
+                string currentAnimal = Animals[i].Name;
+                
+
+                if (Field[row, col] == " ")
+                {
+                    Field[row, col] = currentAnimal[0].ToString().ToUpper();
+                }
+
+
+            }
+
+
         }
        
     }
