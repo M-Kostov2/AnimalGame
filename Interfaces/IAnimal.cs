@@ -9,6 +9,8 @@ namespace Animal_Game.Interfaces
     public interface IAnimal
     {
         string Name { get; set; }
+
+        char icon { get; set; }
         int Hp { get; set; }
         int Attack { get; set; }
         int Category { get; set; }

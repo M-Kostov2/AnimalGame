@@ -8,11 +8,6 @@ namespace Animal_Game.Interfaces
 {
     public interface ITrackProgress
     {
-
-        
-        abstract void AddAnimalProgress(IAnimal Animal);
-      
-
         abstract void ReturnProgress();
        
     }

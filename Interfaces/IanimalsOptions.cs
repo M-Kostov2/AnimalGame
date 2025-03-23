@@ -16,6 +16,8 @@ namespace Animal_Game.Interfaces
         abstract void AnimalEncounter(IAnimal CurrentAnimal, IAnimal AnimalEncounter);
 
 
+
+
         
 
     }
