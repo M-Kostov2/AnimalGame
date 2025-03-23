@@ -11,11 +11,6 @@ namespace Animal_Game.Classes
     {
         private readonly List<IAnimal> Animals;
 
-        public void AddAnimalProgress(IAnimal Animal)
-        {
-            Animals.Add(Animal);
-        }
-
         public void ReturnProgress()
         {
             foreach (var Animal in Animals)

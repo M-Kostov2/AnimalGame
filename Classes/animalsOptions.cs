@@ -11,9 +11,10 @@ namespace Animal_Game.Classes
     {
         private readonly List<IAnimal> Animals;
 
-        public void AddAnimal(IAnimal Animal)
+        public List<IAnimal> AddAnimal(IAnimal Animal)
         {
             Animals.Add(Animal);
+            return  Animals;
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Animal_Game.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,12 @@ namespace Animal_Game.Classes
 {
     public class gameField
     {
-        private string[,] playField = new string[60,100];
-        char border = (char)0x25A0;
+         public string[,] playField {  get; private set; }
+         public char border = (char)0x25A0;
 
-        private matrixGeneration Gen = new matrixGeneration();
-
-        private gameField()
+        public gameField()
         {
-           playField =  Gen.BordersGeneration(ref playField,border);
-            
+          playField = new string[60, 100];
         }
 
     }
