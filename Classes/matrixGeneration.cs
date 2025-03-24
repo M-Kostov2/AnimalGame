@@ -23,7 +23,8 @@ namespace Animal_Game.Classes
             IAnimal Animal = new Animal();
         }
 
-
+           public int currentrow = 0;
+           public  int currentcol = 0;
 
         public string[,] BordersGeneration()
         {
@@ -88,7 +89,7 @@ namespace Animal_Game.Classes
             return Field;
         }
 
-        public void EnemiesGeneration()
+        public string[,] EnemiesGeneration()
         {
             List<IAnimal> Animals = new List<IAnimal>();
 
@@ -113,15 +114,15 @@ namespace Animal_Game.Classes
 
             }
 
-
+            return Field;
         }
 
-        public void PlayerGeneration(string currentPlayer)
+        public string[,] PlayerGeneration(string currentPlayer)//,ref string[,] gameField
         {
             Random randNumber = new Random();
 
             bool validPosition = false;
-
+           
 
             while (validPosition)
             {
@@ -136,25 +137,27 @@ namespace Animal_Game.Classes
                 {
                     Field[row, col] = Animals.FirstOrDefault(x => x.Name == currentPlayer).icon.ToString();
                     validPosition = true;
+                    currentrow = row;
+                    currentcol = col;
+
+                    
                 }
 
 
             }
+
+            return Field;
+            
         }
 
-
-
-
-
-
-        public void MatrixWriter()
+        public void MatrixWriter()//ref string[,] gameField
         {
 
-            for (int i = 0; i < Field1.GetLength(0); i++)
+            for (int i = 0; i < Field.GetLength(0); i++)
             {
-                for (int j = 0; j < Field1.GetLength(1); j++)
+                for (int j = 0; j < Field.GetLength(1); j++)
                 {
-                    Console.Write($"{Field1[i, j]} ");
+                    Console.Write($"{Field[i, j]} ");
                 }
                 Console.WriteLine();
             }
@@ -163,7 +166,14 @@ namespace Animal_Game.Classes
 
         }
 
-
+        public int[] GetCoordinates()
+        {
+            int[] coordinates = new int[2];
+            coordinates[0] = currentrow;
+            coordinates[1] = currentcol;
+        
+            return coordinates;
+        }
 
     }
 }

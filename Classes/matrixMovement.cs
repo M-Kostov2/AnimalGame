@@ -18,24 +18,32 @@ namespace Animal_Game.Classes
             bool iteratorBoolean = true;
 
             matrixGeneration matrixGeneration = new matrixGeneration();
-            matrixGeneration.BordersGeneration();
-            matrixGeneration.obstaclesGeneration();
-            matrixGeneration.EnemiesGeneration();
-            matrixGeneration.PlayerGeneration(currentPlayer);
+            string[,] gameField1 = matrixGeneration.Field;
+            gameCommands gameCommands = new gameCommands();
+
+            gameField1 = matrixGeneration.BordersGeneration();//ref gameField1
+            gameField1 = matrixGeneration.obstaclesGeneration();//ref gameField1
+            gameField1 = matrixGeneration.EnemiesGeneration();//ref gameField1
+            gameField1 = matrixGeneration.PlayerGeneration(currentPlayer);//, ref gameField1
+
+
+            int[] CurrentRow = matrixGeneration.GetCoordinates();
+
 
             while (iteratorBoolean)
-            {   key = Console.ReadKey();
+            {
+                key = Console.ReadKey();
                 if (key.Key == ConsoleKey.UpArrow)
                 {
 
-                  
-                 
+
+                   
 
                 }
                 else if (key.Key == ConsoleKey.DownArrow)
-                { 
-                
-                
+                {
+
+
                 }
                 else if (key.Key == ConsoleKey.RightArrow)
                 {
@@ -47,6 +55,11 @@ namespace Animal_Game.Classes
 
 
                 }
+                else if (key.Key == ConsoleKey.Escape)
+                {
+                    gameCommands.EscKey();
+
+                }
 
                 Console.SetCursorPosition(0, 0);
 
@@ -54,6 +67,13 @@ namespace Animal_Game.Classes
 
 
 
+        }
+
+
+        public void matrixGen()
+        { 
+        
+        
         }
 
 

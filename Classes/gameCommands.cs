@@ -11,6 +11,7 @@ namespace Animal_Game.Classes
         public void EscKey()
         {
             Console.Clear();
+            Console.SetCursorPosition(0, 0);
             string Command;
             matrixGeneration matrix = new();
             
@@ -23,6 +24,7 @@ namespace Animal_Game.Classes
             if (Command == "Esc")
             {
                 Console.Clear();
+                Console.SetCursorPosition(0, 0);
                 matrix.MatrixWriter();
 
 
@@ -32,6 +34,7 @@ namespace Animal_Game.Classes
             {
 
                 Console.Clear();
+                Console.SetCursorPosition(0, 0);
                 matrix.MatrixWriter();
 
             }
