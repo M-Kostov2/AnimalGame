@@ -14,7 +14,7 @@ namespace Animal_Game.Classes
 
         public gameField()
         {
-          playField = new string[60, 100];
+          playField = new string[60, 79];
         }
 
     }

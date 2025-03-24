@@ -18,6 +18,7 @@ namespace Animal_Game.Classes
 
         public matrixGeneration()
         {
+            fieldDemensions = new gameField();
             Field = fieldDemensions.playField;
             border = fieldDemensions.border;
             IAnimal Animal = new Animal();
@@ -124,18 +125,18 @@ namespace Animal_Game.Classes
             bool validPosition = false;
            
 
-            while (validPosition)
+            while (!validPosition)
             {
                 int row = randNumber.Next(0, 60);//60
-                int col = randNumber.Next(0, 100);//100
-
+                int col = randNumber.Next(0, 79);//100
+                currentPlayer = "🐦";
                                                   // има шанс да гръмне тук
                // string currentAnimal = Animals.FirstOrDefault(x => x.Name == currentPlayer).ToString();
 
 
-                if (Field[row, col] == " ")
+                if (Field[row, col] == "  ")
                 {
-                    Field[row, col] = Animals.FirstOrDefault(x => x.Name == currentPlayer).icon.ToString();
+                    Field[row, col] = currentPlayer;//Animals.FirstOrDefault(x => x.Name == currentPlayer).icon.ToString();
                     validPosition = true;
                     currentrow = row;
                     currentcol = col;
@@ -166,6 +167,22 @@ namespace Animal_Game.Classes
 
         }
 
+        public void MatrixWriter(string[,] gameField)//ref string[,] gameField
+        {
+
+            for (int i = 0; i < gameField.GetLength(0); i++)
+            {
+                for (int j = 0; j < gameField.GetLength(1); j++)
+                {
+                    Console.Write($"{gameField[i, j]} ");
+                }
+                Console.WriteLine();
+            }
+
+
+
+        }
+
         public int[] GetCoordinates()
         {
             int[] coordinates = new int[2];
@@ -174,6 +191,7 @@ namespace Animal_Game.Classes
         
             return coordinates;
         }
+
 
     }
 }
