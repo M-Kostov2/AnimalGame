@@ -15,6 +15,25 @@ namespace Animal_Game.Classes
         {
             Animals.Add(Animal);
             return  Animals;
+
+        }
+        public void ChooseAnimal()
+        {   int count = 1;
+            for (int i = 0; i < Animals.Capacity; i++)
+            {
+
+                Console.WriteLine($"{count}-{Animals[i].Name}-{Animals[i].Icon}");
+                count++;
+            }
+
+        }
+
+        public string GetCurrentPlayer(int idNum)
+        {
+           string currentPlayer="";
+            currentPlayer = Animals.FirstOrDefault(x=>x.ID == idNum).Icon.ToString();
+            
+            return currentPlayer; 
         }
 
 

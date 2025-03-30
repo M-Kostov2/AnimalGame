@@ -14,7 +14,7 @@ namespace Animal_Game.Classes
 
         public gameField()
         {
-          playField = new string[60, 79];
+          playField = new string[40, 60]; //лаптоп-60,79 //тест компютър 40,60
         }
 
     }

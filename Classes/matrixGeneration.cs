@@ -11,17 +11,16 @@ namespace Animal_Game.Classes
     {
         public string[,] Field { get; set; }
         private gameField fieldDemensions { get; }
-        private IAnimal Animal;
+       
         private char border { get; }
 
-        private List<IAnimal> Animals;
-
+  
         public matrixGeneration()
         {
             fieldDemensions = new gameField();
             Field = fieldDemensions.playField;
             border = fieldDemensions.border;
-            IAnimal Animal = new Animal();
+           // IAnimal Animal = new Animal();
         }
 
            public int currentrow = 0;
@@ -69,11 +68,11 @@ namespace Animal_Game.Classes
         {
             Random randNumber = new Random();
             string border = ((char)0x25A0).ToString();
-            string playerCharacter = "🦑";
-            for (int i = 0; i < 40; i++)
+            string playerCharacter = "🌲";
+            for (int i = 0; i < 20; i++)
             {
-                int row = randNumber.Next(0, 40);//60
-                int col = randNumber.Next(0, 60);//100
+                int row = randNumber.Next(0, 40); //   60- данни за лаптопа  // данни за настолния компютър-     // тестови данни за компютъра -40
+                int col = randNumber.Next(0, 60); //   79-данни за лаптопа   // данни за настолния компютър-     // тестови данни за компютъра -60
 
                 if (Field[row, col] == "  ")
                 {
@@ -82,7 +81,35 @@ namespace Animal_Game.Classes
 
 
             }
+            playerCharacter = "🌴";
 
+            for (int i = 0; i < 20; i++)
+            {
+                int row = randNumber.Next(0, 40); //   60- данни за лаптопа  // данни за настолния компютър-     // тестови данни за компютъра -40
+                int col = randNumber.Next(0, 60); //   79-данни за лаптопа   // данни за настолния компютър-     // тестови данни за компютъра -60
+
+                if (Field[row, col] == "  ")
+                {
+                    Field[row, col] = playerCharacter;
+                }
+
+
+            }
+            
+             playerCharacter = "🌵";
+
+            for (int i = 0; i < 20; i++)
+            {
+                int row = randNumber.Next(0, 40); //   60- данни за лаптопа  // данни за настолния компютър-     // тестови данни за компютъра -40
+                int col = randNumber.Next(0, 60); //   79-данни за лаптопа   // данни за настолния компютър-     // тестови данни за компютъра -60
+
+                if (Field[row, col] == "  ")
+                {
+                    Field[row, col] = playerCharacter;
+                }
+
+
+            }
 
 
 
@@ -101,8 +128,8 @@ namespace Animal_Game.Classes
 
             for (int i = 0; i < Animals.Count; i++)
             {
-                int row = randNumber.Next(0, 60);//60
-                int col = randNumber.Next(0, 100);//100
+                int row = randNumber.Next(0, 40);//60          //40 test  //60 laptop
+                int col = randNumber.Next(0, 60);//100        //60 test  //79 laptop
 
                 string currentAnimal = Animals[i].Name;
 
@@ -127,9 +154,9 @@ namespace Animal_Game.Classes
 
             while (!validPosition)
             {
-                int row = randNumber.Next(0, 60);//60
-                int col = randNumber.Next(0, 79);//100
-                currentPlayer = "🐦";
+                int row = randNumber.Next(0, 40);//60          //40 test  //60 laptop
+                int col = randNumber.Next(0, 60);//100        //60 test  //79 laptop
+                
                                                   // има шанс да гръмне тук
                // string currentAnimal = Animals.FirstOrDefault(x => x.Name == currentPlayer).ToString();
 
@@ -149,6 +176,16 @@ namespace Animal_Game.Classes
 
             return Field;
             
+        }
+        public string[,] PlayerGeneration(int tempRow,int tempCol, string currentPlayer)//,ref string[,] gameField
+        {
+           
+            int row = tempRow;
+            int col = tempCol;
+            Field[row, col] = currentPlayer;
+
+            return Field;
+
         }
 
         public void MatrixWriter()//ref string[,] gameField
@@ -191,6 +228,8 @@ namespace Animal_Game.Classes
         
             return coordinates;
         }
+
+       
 
 
     }

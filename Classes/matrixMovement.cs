@@ -8,16 +8,18 @@ namespace Animal_Game.Classes
 {
     public class matrixMovement
     {
+        matrixGeneration matrixGeneration = new matrixGeneration();
 
-        public void Movement()
-        {   Console.OutputEncoding = Encoding.UTF8;
+        public async Task Movement()
+        {
+            Console.OutputEncoding = Encoding.UTF8;
             string currentPlayer = "🐦";
-            Console.ReadLine();
+
 
             ConsoleKeyInfo key = new ConsoleKeyInfo();
             bool iteratorBoolean = true;
+            Console.SetCursorPosition(0, 0);
 
-            matrixGeneration matrixGeneration = new matrixGeneration();
             string[,] gameField1 = matrixGeneration.Field;
             gameCommands gameCommands = new gameCommands();
 
@@ -31,40 +33,45 @@ namespace Animal_Game.Classes
             int[] CurrentCoords = matrixGeneration.GetCoordinates();
             int row = CurrentCoords[0];
             int col = CurrentCoords[1];
-
+            string border = matrixGeneration.border + " ".ToString();
+            bool freeToProceed1 = true;
             while (iteratorBoolean)
             {
+
+
                 key = Console.ReadKey();
-                if (key.Key == ConsoleKey.UpArrow)
+                if (key.Key == ConsoleKey.UpArrow && gameField1[row - 1, col] != border && FreeToProceed(key.Key, row, col) == freeToProceed1)
                 {
-                    gameField1[row, col] = "  ";
-                    gameField1[row+1,col] = currentPlayer;
-                    
 
-                   
+                    gameField1[row, col] = "  ";
+                    gameField1[--row, col] = currentPlayer;
+
+
 
                 }
-                else if (key.Key == ConsoleKey.DownArrow)
+                else if (key.Key == ConsoleKey.DownArrow && gameField1[row + 1, col] != border && FreeToProceed(key.Key, row, col) == freeToProceed1)
                 {
+
                     gameField1[row, col] = "  ";
-                    gameField1[row -1, col] = currentPlayer;
-                   
+                    gameField1[++row, col] = currentPlayer;
+
                 }
-                else if (key.Key == ConsoleKey.RightArrow)
-                {
-                     gameField1[row, col] = "  ";
-                    gameField1[row , col+1] = currentPlayer;
-                    
-                }
-                else if (key.Key == ConsoleKey.LeftArrow)
-                {
+                else if (key.Key == ConsoleKey.RightArrow && gameField1[row, col + 1] != border && FreeToProceed(key.Key, row, col) == freeToProceed1)
+                { 
                     gameField1[row, col] = "  ";
-                    gameField1[row , col-1] = currentPlayer;
-                   
+                    gameField1[row, ++col] = currentPlayer;
+
+                }
+                else if (key.Key == ConsoleKey.LeftArrow && gameField1[row, col - 1] != border && FreeToProceed(key.Key, row, col) == freeToProceed1)
+                {
+
+                    gameField1[row, col] = "  ";
+                    gameField1[row, --col] = currentPlayer;
+
                 }
                 else if (key.Key == ConsoleKey.Escape)
                 {
-                    gameCommands.EscKey();
+                    gameCommands.EscKey(row, col);
 
                 }
 
@@ -78,10 +85,41 @@ namespace Animal_Game.Classes
         }
 
 
-        public void matrixGen()
-        { 
-        
-        
+        public bool FreeToProceed(ConsoleKey key, int row, int col)
+        {
+
+            string[,] gameField1 = matrixGeneration.Field;
+
+            string tree1 = "🌲";
+            string tree2 = "🌴";
+            string cactus = "🌵";
+
+            bool freeToProceed = false;
+            if (key == ConsoleKey.UpArrow && gameField1[row - 1, col] != tree1 && gameField1[row - 1, col] != tree2 && gameField1[row - 1, col] != cactus)
+            {
+                freeToProceed = true;
+
+            }
+            else if (key == ConsoleKey.DownArrow && gameField1[row + 1, col] != tree1 && gameField1[row + 1, col] != tree2 && gameField1[row + 1, col] != cactus)
+            {
+                freeToProceed = true;
+
+            }
+            else if (key == ConsoleKey.RightArrow && gameField1[row, col + 1] != tree1 && gameField1[row, col + 1] != tree2 && gameField1[row , col+1] != cactus)
+            {
+                freeToProceed = true;
+            }
+            else if (key == ConsoleKey.LeftArrow && gameField1[row, col - 1] != tree1 && gameField1[row, col - 1] != tree2 && gameField1[row , col-1] != cactus)
+            {
+                freeToProceed = true;
+            }
+            else
+            {
+                freeToProceed = false;
+            }
+
+            return freeToProceed;
+
         }
 
 
