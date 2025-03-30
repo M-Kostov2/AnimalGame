@@ -8,18 +8,18 @@ namespace Animal_Game.Interfaces
 {
     public interface IAnimal
     {
-        string Name { get; set; }
+        string Name { get; }
+        int ID { get; }
+        string Icon { get; }
+        int Hp { get; }
+        int Attack { get; }
+        int Category { get; }
+        string Habitat { get; }
+        int Kilograms { get; }
+        int killCount { get; }
 
-        char icon { get; set; }
-        int Hp { get; set; }
-        int Attack { get; set; }
-        int Category { get; set; }
-        string Habitat { get; set; }
-        int Kilograms { get; set; }
-        List<int> killCount { get; set; }
 
 
 
-     
     }
 }
