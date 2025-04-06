@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Animal_Game.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,19 +14,27 @@ namespace Animal_Game.Classes
         public async Task Movement()
         {
             Console.OutputEncoding = Encoding.UTF8;
-            string currentPlayer = "🐦";
-
+           //  string currentPlayer = "🐅";
+             
 
             ConsoleKeyInfo key = new ConsoleKeyInfo();
             bool iteratorBoolean = true;
             Console.SetCursorPosition(0, 0);
 
-            string[,] gameField1 = matrixGeneration.Field;
+            string[,] gameField1 = matrixGeneration.Field;         
             gameCommands gameCommands = new gameCommands();
+            AnimalsOptions animalsOptions = new AnimalsOptions();
+            CategorySet categorySet = new CategorySet();
+            List<Animal> Animals = animalsOptions.Animals;
+            List<Animal> Animalscat =  categorySet.CategorySetter(Animals);
 
+
+
+           
+            string  currentPlayer = matrixGeneration.InitialPlayer();
             gameField1 = matrixGeneration.BordersGeneration();//ref gameField1
             gameField1 = matrixGeneration.obstaclesGeneration();//ref gameField1
-            gameField1 = matrixGeneration.EnemiesGeneration();//ref gameField1
+            gameField1 = matrixGeneration.EnemiesGeneration(Animals);//ref gameField1
             gameField1 = matrixGeneration.PlayerGeneration(currentPlayer.ToString());//, ref gameField1
             matrixGeneration.MatrixWriter();
 
@@ -71,8 +80,8 @@ namespace Animal_Game.Classes
                 }
                 else if (key.Key == ConsoleKey.Escape)
                 {
-                    gameCommands.EscKey(row, col);
-
+                  gameField1 = gameCommands.EscKey(ref gameField1,row, col,ref currentPlayer);
+                    
                 }
 
                 Console.SetCursorPosition(0, 0);

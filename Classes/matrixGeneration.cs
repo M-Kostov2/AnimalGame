@@ -20,11 +20,12 @@ namespace Animal_Game.Classes
             fieldDemensions = new gameField();
             Field = fieldDemensions.playField;
             border = fieldDemensions.border;
-           // IAnimal Animal = new Animal();
+           
         }
 
            public int currentrow = 0;
            public  int currentcol = 0;
+           
 
         public string[,] BordersGeneration()
         {
@@ -117,9 +118,9 @@ namespace Animal_Game.Classes
             return Field;
         }
 
-        public string[,] EnemiesGeneration()
+        public string[,] EnemiesGeneration(List<Animal> Animals1)
         {
-            List<IAnimal> Animals = new List<IAnimal>();
+            List<Animal> Animals = Animals1;
 
             Random randNumber = new Random();
 
@@ -131,12 +132,12 @@ namespace Animal_Game.Classes
                 int row = randNumber.Next(0, 40);//60          //40 test  //60 laptop
                 int col = randNumber.Next(0, 60);//100        //60 test  //79 laptop
 
-                string currentAnimal = Animals[i].Name;
+                string currentAnimal = Animals[i].Icon;
+                //error here no reference
 
-
-                if (Field[row, col] == " ")
+                if (Field[row, col] == "  ")
                 {
-                    Field[row, col] = currentAnimal[0].ToString().ToUpper();
+                    Field[row, col] = currentAnimal.ToString();
                 }
 
 
@@ -173,18 +174,18 @@ namespace Animal_Game.Classes
 
 
             }
-
+           
             return Field;
             
         }
-        public string[,] PlayerGeneration(int tempRow,int tempCol, string currentPlayer)//,ref string[,] gameField
+        public string[,] PlayerGeneration(int tempRow,int tempCol, string currentPlayer,ref string[,] gameField1)//,ref string[,] gameField
         {
            
             int row = tempRow;
             int col = tempCol;
-            Field[row, col] = currentPlayer;
-
-            return Field;
+            gameField1[row, col] = currentPlayer;
+           
+            return gameField1;
 
         }
 
@@ -204,14 +205,14 @@ namespace Animal_Game.Classes
 
         }
 
-        public void MatrixWriter(string[,] gameField)//ref string[,] gameField
+        public void MatrixWriter(string[,] Field)//ref string[,] gameField
         {
 
-            for (int i = 0; i < gameField.GetLength(0); i++)
+            for (int i = 0; i < Field.GetLength(0); i++)
             {
-                for (int j = 0; j < gameField.GetLength(1); j++)
+                for (int j = 0; j < Field.GetLength(1); j++)
                 {
-                    Console.Write($"{gameField[i, j]} ");
+                    Console.Write($"{Field[i, j]} ");
                 }
                 Console.WriteLine();
             }
@@ -229,8 +230,36 @@ namespace Animal_Game.Classes
             return coordinates;
         }
 
-       
+        public string Animalchange()
+        {
+                    
+            AnimalsOptions animals = new();       
+            int currentCharachter =  animals.ChangeAnimaPlayer();    
+            
 
+            string newCharachter = animals.GetCurrentPlayer(currentCharachter);
+           
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            return newCharachter;
+        }
+
+        public string InitialPlayer()
+        {   AnimalsOptions animals1 = new();  
+            
+             Console.WriteLine("Choose an animal to start with:");             
+              int currentCharachter  = animals1.ChooseAnimal();
+            
+             
+            string newCharachter = animals1.GetCurrentPlayer(currentCharachter);
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+
+
+            return newCharachter;
+        }
+
+   
 
     }
 }

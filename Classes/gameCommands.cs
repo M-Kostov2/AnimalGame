@@ -9,7 +9,9 @@ namespace Animal_Game.Classes
 {
     public class gameCommands
     {
-        public void EscKey(int tempRow,int tempCol)
+       matrixGeneration matrix = new();
+
+        public string[,] EscKey(ref string[,] gameField1,int tempRow,int tempCol,ref  string currentPlayer)
         {
             int row = tempRow;
             int col = tempCol;
@@ -17,13 +19,13 @@ namespace Animal_Game.Classes
             Console.Clear();
             Console.SetCursorPosition(0, 0);
 
-            matrixGeneration matrix = new();
-            animalsOptions animals = new();
+            
+            AnimalsOptions animals = new();
             TrackProgress kills = new();
 
+             string[,] tempgameField1 = gameField1;
 
 
-            int currentCharachter;
             Console.WriteLine("Press the button for command you want to proceed with-");
             Console.WriteLine("-Esc->Esc\n" +
                "-Change Animal->B\n" +
@@ -35,34 +37,31 @@ namespace Animal_Game.Classes
             {
                 Console.Clear();
                 Console.SetCursorPosition(0, 0);
-                matrix.MatrixWriter();
+                
 
 
 
             }
             else if (Command.Key == ConsoleKey.B)//Change Animal
             {
-
                 Console.Clear();
                 Console.SetCursorPosition(0, 0);
-                animals.ChooseAnimal();
-                currentCharachter = int.Parse(Console.ReadLine());
-                string newCharachter = animals.GetCurrentPlayer(currentCharachter);
-                string[,] Temp = matrix.PlayerGeneration(tempRow, tempCol, newCharachter);
-                matrix.MatrixWriter(Temp);
-
+                string playerIcon = matrix.Animalchange();
+                currentPlayer = playerIcon;
+                tempgameField1 = matrix.PlayerGeneration(row, col, playerIcon,ref gameField1);
+                
             }
             else if (Command.Key == ConsoleKey.Backspace)
             {
                 Console.Clear();
                 Console.SetCursorPosition(0, 0);
                 kills.ReturnProgress();
-                return;
+                return null;
 
             }
 
 
-
+            return tempgameField1;
 
         }
 

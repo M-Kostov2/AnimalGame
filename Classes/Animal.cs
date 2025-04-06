@@ -1,5 +1,6 @@
 ﻿using Animal_Game.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,66 +9,32 @@ using System.Threading.Tasks;
 namespace Animal_Game.Classes
 {
     public class Animal : IAnimal
-    {
-      
-
-        public Animal(string name, int id, string icon, int hp, int attack, string habitat, int kilograms)
-        {
-            Name = name;
-            ID = id;
-            Icon = icon;
-            Hp = hp;
-            Attack = attack;
-            Habitat = habitat;
-            Kilograms = kilograms;
-            Category = CategorySetter(kilograms,attack,hp);
-            killCount = 0;
-        }
-
-        public string Name { get; private set; }
-        public int ID { get; private set; }
-        public string Icon { get; private set; }
-        public int Hp { get; private set; }
-        public int Attack { get; private set; }
-        public int Category { get; private set; }
-        public string Habitat { get; private set; }
-        public int Kilograms { get; private set; }
+    {   
+        public string Name { get;  set; }
+        public int ID { get;  set; }
+        public string Icon { get;  set; }
+        public int Hp { get;  set; }
+        public int Attack { get;  set; }      
+        public string Habitat { get;  set; }
+        public int Kilograms { get;  set; }
         public int killCount { get;  set; }
+        public int Category { get;  set; }
 
-        private int CategorySetter(int kilograms , int attack,int Hp)
+
+        public Animal(string name,int id,string icon,int hp,int attack,string habitat,int kilograms)
         {
-            int category = 0;
-
-            if (kilograms >= 1000 && attack > 10)
-            {
-                category = 5;
-            }
-            else if (kilograms >= 1000 && attack <= 10)
-            {
-                category = 4;
-            }
-            else if (kilograms < 1000 && attack >= 10)
-            {
-                category = 4;
-            }
-            else if (kilograms < 100 && attack < 10 && attack > 4)
-            {
-                category = 3;
-
-            }
-            else if (kilograms > 100 && attack < 4)
-            {
-                category = 2;
-            }
-            else if (kilograms <= 50 && attack > 4)
-            { 
-            category = 1;
             
-            }
+            this.Name = name;
+            this.ID = id;
+            this.Icon = icon;
+            this.Hp = hp;               
+            this.Attack = attack;
+            this.Habitat = habitat;
+            this.Kilograms = kilograms;     
 
-
-                return category;
         }
+
+
 
     }
 }
