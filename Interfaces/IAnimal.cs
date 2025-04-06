@@ -13,7 +13,7 @@ namespace Animal_Game.Interfaces
         string Icon { get; }
         int Hp { get; }
         int Attack { get; }
-        int Category { get; }
+        int Category { get;  set; }
         string Habitat { get; }
         int Kilograms { get; }
         int killCount { get; }
