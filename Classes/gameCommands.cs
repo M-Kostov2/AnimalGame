@@ -11,7 +11,7 @@ namespace Animal_Game.Classes
     {
        matrixGeneration matrix = new();
 
-        public string[,] EscKey(ref string[,] gameField1,int tempRow,int tempCol,ref  string currentPlayer)
+        public string[,] EscKey(ref string[,] gameField1,ref List<Animal> Animals,int tempRow,int tempCol,ref  string currentPlayer)
         {
             int row = tempRow;
             int col = tempCol;
@@ -55,8 +55,8 @@ namespace Animal_Game.Classes
             {
                 Console.Clear();
                 Console.SetCursorPosition(0, 0);
-                kills.ReturnProgress();
-                return null;
+                kills.ReturnProgress(Animals);
+                Environment.Exit(0);
 
             }
 

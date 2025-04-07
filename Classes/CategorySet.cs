@@ -33,7 +33,7 @@ namespace Animal_Game.Classes
                 {
                     category = 4;
                 }
-                else if (kilograms < 1000 && attack >= 10)
+                else if (kilograms <= 1000 && attack >= 10)
                 {
                     category = 4;
                 }

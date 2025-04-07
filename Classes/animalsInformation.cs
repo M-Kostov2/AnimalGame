@@ -15,7 +15,7 @@ namespace Animal_Game.Classes
         Animal Monkey     = new Animal("Monkey", 3,   "🐒", 100, 10, "Forest", 300);
         Animal Elephant   = new Animal("Elephant", 4, "🐘", 100, 10, "Savanha", 300);
         Animal Rabbit     = new Animal("Rabbit", 5, "🐇", 100, 10, "Forest", 300);
-        Animal Gorilla    = new Animal("Gorilla", 6, "🦍", 100, 10, "Jungle", 300);
+        Animal Gorilla    = new Animal("Gorilla", 6, "🦍", 100, 10, "Forest", 300);
         Animal Rhinoceros = new Animal("Rhinoceros", 7, "🦏", 100, 10, "Savanha", 300);
         Animal Hippo      = new Animal("Hippo", 8, "🦛", 100, 10, "Savanha", 300);
         Animal Giraffe    = new Animal("Giraffe", 9, "🦒", 100, 10, "Savanha", 300);
