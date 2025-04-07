@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Animal_Game.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Animal_Game.Interfaces
 {
     public interface ITrackProgress
     {
-        abstract void ReturnProgress();
+        abstract void ReturnProgress(List<Animal> Animals);
        
     }
 }
